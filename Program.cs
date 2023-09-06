@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-
+using Microsoft.EntityFrameworkCore;
+using Registros.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-builder.Services.
+var ConStr = builder.Configuration.GetConnectionString("ConsStr");
+
+builder.Services.AddDbContext<Context>(op => op.UseSqlite(ConStr));
 
 var app = builder.Build();
 
