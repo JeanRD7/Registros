@@ -3,7 +3,6 @@
 @inject ClientesBLL ClientesBLL
 @inject NotificationService notificacion
 
-
 <PageTitle>Registro Clientes</PageTitle>
 
 <EditForm Model="Cliente" OnValidSubmit="Guardar">
@@ -132,7 +131,7 @@
         if (guardado)
         {
             Nuevo();
-            //notificacion.ShowNotification("Guardado correctamente.");
+           // notificacion.ShowNotification("Guardado correctamente.");
         }
         else
         {
