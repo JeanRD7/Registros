@@ -2,65 +2,72 @@
 @inject ClientesBLL clienteBLL
 
 <EditForm Model="this">
-    <div class="card">
-        <div class="card-header">
+    <div class="rz-border-radius-4 shadow d-block p-2 border border-4">
+        <div class="rz-border-radius-4 shadow card-header text-center">
             <h4>Consulta de Clientes</h4>
         </div>
-    </div>
-    <div class="card-body">
-        <form>
-            <div class="row">
-                <div class="col">
-                    <label>Filtro</label>
-                    <select class="form-control" @bind="Filtro">
-                        
-                        <option value="0">Cliente Id</option>
-                        <option value="1">Nombre Cliente</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <div class="input-group d-flex align-items-end">
-                        <label>Buscar</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" @bind="Criterio" />
-                            <button type="button" class="btn btn-info" @onclick="Buscar">
-                                <i class="oi oi-magnifying-glass" /> Buscar
-                            </button>
+
+
+        <div class="container overflow-hidden">
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <label>Buscar Por:</label>
+                            <select class="form-control" @bind="Filtro">
+
+                                <option value="0">Lista Completa</option>
+                                <option value="1">Cliente Id</option>
+                                <option value="2">Nombre Cliente</option>
+                                <option value="3">Rnc Cliente</option>
+
+                            </select>
+                        </div>
+                        <div class="col">
+                            <div class="input-group d-flex align-items-end">
+                                <label>Buscar</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" @bind="Criterio" />
+                                    <button type="button" class="btn btn-info" @onclick="Buscar">
+                                        <i class="oi oi-magnifying-glass" /> Buscar
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </form>
+                </form>
 
-        <table class="table table-striped table-hover mt-4 table-striped" style="cursor: pointer;">
-            <thead class="thead-green">
-                <tr class="table-info">
-                    <th>ClienteId</th>
-                    <th>Nombres</th>
-                    <th>Dirección</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Celular</th>
-                    <th>RNC</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in lista)
-                {
-                    <tr>
-                        <td>@item.ClientesId</td>
-                        <td>@item.Nombre</td>
-                        <td>@item.Direccion</td>
-                        <td>@item.Email</td>
-                        <td>@item.Telefono</td>
-                        <td>@item.Celular </td>
-                        <td>@item.Rnc</td>
-                        <td><a href="R_Clientes/@item.ClientesId">Ver</a></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                <table class="table table-striped table-hover mt-4 table-striped" style="cursor: pointer;">
+                    <thead class="thead-green">
+                        <tr class="table-info">
+                            <th>ClienteId</th>
+                            <th>Nombre</th>
+                            <th>Dirección</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Celular</th>
+                            <th>Rnc Cliente</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in lista)
+                        {
+                            <tr>
+                                <td>@item.ClientesId</td>
+                                <td>@item.Nombre</td>
+                                <td>@item.Direccion</td>
+                                <td>@item.Email</td>
+                                <td>@item.Telefono</td>
+                                <td>@item.Celular </td>
+                                <td>@item.Rnc</td>
+                                <td><a href="R_Clientes/@item.ClientesId">Ver</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </EditForm>
 
@@ -82,14 +89,17 @@
             switch (Filtro)
             {
                 case "0":
-                    lista = clienteBLL.GetList(o => true);
+                    lista = clienteBLL.GetList(op => true);
                     break;
                 case "1":
-                    lista = clienteBLL.GetList(o => o.ClientesId.ToString() == (Criterio));
+                    lista = clienteBLL.GetList(op => op.ClientesId.ToString() == (Criterio));
                     break;
 
                 case "2":
-                    lista = clienteBLL.GetList(o => o.Nombre.ToLower().Contains(Criterio.ToLower()));
+                    lista = clienteBLL.GetList(op => op.Nombre.ToLower().Contains(Criterio.ToLower()));
+                    break;
+                case "3":
+                    lista = clienteBLL.GetList(op => op.Rnc.ToLower().Contains(Criterio.ToLower()));
                     break;
             }
         }

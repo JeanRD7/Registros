@@ -10,7 +10,7 @@
 
     <div class="rz-border-radius-4 shadow d-block p-2 border border-4">
         <div class="rz-border-radius-4 shadow card-header text-center">
-            @*<h3>Registro de Clientes</h3>*@
+            <h3>Registro de Clientes</h3>
         </div>
 
         <div class="container overflow-hidden">
@@ -36,8 +36,8 @@
 
 
                     <div class="col-ms">
-                        <label>Nombres </label>
-                        <InputText @bind-Value="Cliente.Nombre" placeholder="Ingrese su nombre"
+                        <label>Nombre </label>
+                        <InputText @bind-Value="Cliente.Nombre" placeholder="Juan Perez"
                                    class="rz-border-radius-4 shadow form-control" />
                         <ValidationMessage For="@(() => Cliente.Nombre)" />
                     </div>
@@ -45,7 +45,7 @@
 
                     <div class="col-ms">
                         <label>Teléfono </label>
-                        <InputText @bind-Value="Cliente.Telefono" placeholder="Ejemplo 809-875-9684"
+                        <InputText @bind-Value="Cliente.Telefono" placeholder="809-584-5843"
                                    class="rz-border-radius-4 shadow form-control" />
                         <ValidationMessage For="@(() => Cliente.Telefono)" />
                     </div>
@@ -53,7 +53,7 @@
 
                     <div class="col-ms">
                         <label>Celular </label>
-                        <InputText @bind-Value="Cliente.Celular" placeholder="Ejemplo 809-875-9684"
+                        <InputText @bind-Value="Cliente.Celular" placeholder="809-875-9684"
                                    class="rz-border-radius-4 shadow form-control" />
                         <ValidationMessage For="@(() => Cliente.Celular)" />
                     </div>
@@ -61,7 +61,7 @@
 
                     <div class="col-ms">
                         <label>Email </label>
-                        <InputText @bind-Value="Cliente.Email" placeholder="Nombre@gmail.com"
+                        <InputText @bind-Value="Cliente.Email" placeholder="example@gmail.com"
                                    class="rz-border-radius-4 shadow form-control" />
                         <ValidationMessage For="@(() => Cliente.Email)" />
                     </div>
@@ -69,7 +69,7 @@
 
                     <div class="col-ms">
                         <label>Rnc </label>
-                        <InputText @bind-Value="Cliente.Rnc" placeholder="RNC"
+                        <InputText @bind-Value="Cliente.Rnc" placeholder="984231-1"
                                    class="rz-border-radius-4 shadow form-control" />
                         <ValidationMessage For="@(() => Cliente.Rnc)" />
                     </div>
@@ -77,7 +77,7 @@
 
                     <div class="col-ms">
                         <label>Dirección </label>
-                        <InputText @bind-Value="Cliente.Direccion" placeholder="Ingrese su dirección"
+                        <InputText @bind-Value="Cliente.Direccion" placeholder="Pimentel/#34/Rep.Dom"
                                    class="rz-border-radius-4 shadow form-control" />
                         <ValidationMessage For="@(() => Cliente.Direccion)" />
                     </div>
