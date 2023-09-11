@@ -7,7 +7,7 @@ namespace Registros.BLL
 {
     public class ClientesBLL
     {
-        private Context _context;
+        private readonly Context _context;
 
         public ClientesBLL(Context context)
         {
@@ -45,16 +45,11 @@ namespace Registros.BLL
                 return this.Modificar(Clientes);
         }
 
-        public bool Eliminar(int ClientesId)
+        public bool Eliminar(Clientes clientes)
         {
-            var eliminado = _context.Clientes.Where(op => op.ClientesId == ClientesId).SingleOrDefault();
-
-            if (eliminado != null)
-            {
-                _context.Entry(eliminado).State = EntityState.Deleted;
-                return _context.SaveChanges() > 0;
-            }
-            return false;
+            _context.Clientes.Remove(clientes);
+            int cantidad = _context.SaveChanges();
+            return cantidad > 0;
         }
 
         public Clientes? Buscar(int ClienteId)
